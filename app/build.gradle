@@ -1,0 +1,12 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.lark.music'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'com.lark.music'
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+}
