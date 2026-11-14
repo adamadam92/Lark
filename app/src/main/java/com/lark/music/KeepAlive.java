@@ -17,7 +17,7 @@ public class KeepAlive extends Service {
             .setContentText("Music player is running")
             .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentIntent(pi).build();
-        startForeground(1, n, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+        if (android.os.Build.VERSION.SDK_INT >= 29) startForeground(1, n, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK); else startForeground(1, n);
         return START_STICKY;
     }
 }

@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
     }
 
     WebResourceResponse cover(Uri u) throws Exception {
-        Bitmap bm = getContentResolver().loadThumbnail(u, new Size(512, 512), null);
+        android.media.MediaMetadataRetriever mr = new android.media.MediaMetadataRetriever(); mr.setDataSource(this, u); byte[] pic = mr.getEmbeddedPicture(); mr.release(); if (pic == null) throw new Exception(); Bitmap bm = android.graphics.BitmapFactory.decodeByteArray(pic, 0, pic.length);
         ByteArrayOutputStream o = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 85, o);
         return new WebResourceResponse("image/jpeg", null, new ByteArrayInputStream(o.toByteArray()));
